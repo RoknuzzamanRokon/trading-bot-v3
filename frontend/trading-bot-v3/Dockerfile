@@ -2,11 +2,12 @@ FROM node:14-alpine
 
 WORKDIR /app
 
+# Debugging
+RUN npm -v
+RUN ls -al
+
 COPY package.json .
 COPY package-lock.json .
-
-# Clear npm cache
-RUN npm cache clean --force
 
 # Install dependencies
 RUN npm install

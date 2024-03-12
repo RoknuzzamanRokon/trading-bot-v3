@@ -8,7 +8,11 @@ RUN npm install
 
 COPY . .
 
-RUN npm ci --quiet && npm run build
+# Install dependencies
+RUN npm ci --quiet
+
+# Build the project
+RUN npm run build
 
 EXPOSE 8080
 

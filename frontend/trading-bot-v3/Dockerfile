@@ -2,7 +2,7 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY trading-bot-v3/package.json ./
+COPY frontend/trading-bot-v3/package.json ./
  
 RUN npm install
 

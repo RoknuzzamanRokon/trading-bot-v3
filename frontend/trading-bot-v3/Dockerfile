@@ -10,9 +10,6 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
-# Install production dependencies
-RUN npm ci --quiet
-
 # Build the project
 RUN npm run build
 

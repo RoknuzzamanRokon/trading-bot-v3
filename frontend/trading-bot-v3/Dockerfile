@@ -1,10 +1,12 @@
-FROM node:18-alpine
+FROM node:14-alpine
 
 WORKDIR /app
 
-# Copy package files separately to leverage Docker cache
 COPY package.json .
 COPY package-lock.json .
+
+# Clear npm cache
+RUN npm cache clean --force
 
 # Install dependencies
 RUN npm install

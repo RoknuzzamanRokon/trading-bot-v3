@@ -16,6 +16,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 14
+      - name: Debugging
+        run: |
+          ls -al
+          ls -al frontend/trading-bot-v3
+          
+      - name: Navigate to the frontend directory
+        run: cd frontend/trading-bot-v3
+
+      # Add the following line to change back to the project root
+      - name: Change back to project root
+        run: cd ../../
 
       - name: Navigate to the frontend directory
         run: cd frontend/trading-bot-v3

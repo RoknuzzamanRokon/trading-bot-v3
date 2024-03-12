@@ -2,7 +2,7 @@ name: trading-bot-v3
 on:
   push:
     branches:
-      - frontend
+      - master
 
 jobs:
   build:

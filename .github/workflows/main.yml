@@ -17,12 +17,15 @@ jobs:
         with:
           node-version: 14
 
+      - name: Navigate to the frontend directory
+        run: cd frontend/trading-bot-v3
+
       - name: Install npm dependencies
         run: npm ci
 
       - name: Build Docker Image
         run: docker build -t rokondoc/trading-bot-v3 -f frontend/trading-bot-v3/Dockerfile .
-      
+
       - name: Publish image to Docker Hub
         run: |
           docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
@@ -42,3 +45,4 @@ jobs:
 
       - name: Run Docker container
         run: docker run -d -p 3000:80 --name reactContainer rokondoc/trading-bot-v3
+

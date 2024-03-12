@@ -2,13 +2,17 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY frontend/trading-bot-v3/package.json ./
- 
-RUN npm install
-
-COPY . .
+# Copy package files separately to leverage Docker cache
+COPY package.json .
+COPY package-lock.json .
 
 # Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY . .
+
+# Install production dependencies
 RUN npm ci --quiet
 
 # Build the project
@@ -16,4 +20,4 @@ RUN npm run build
 
 EXPOSE 8080
 
-CMD [ "npm", "run", "preview" ]
+CMD ["npm", "run", "preview"]
